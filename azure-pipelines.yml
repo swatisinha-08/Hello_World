@@ -1,13 +1,14 @@
 trigger:
-  - main  # Runs when changes are pushed to the main branch
+  - main  # Runs the pipeline when changes are pushed to the main branch
 
 pool:
-  vmImage: 'ubuntu-latest'  # Uses an Ubuntu machine to run the script
+  vmImage: 'ubuntu-latest'  # Uses an Ubuntu machine to run the pipeline
 
 steps:
   - task: DotNetCoreCLI@2
+    displayName: 'Build .NET Project'
     inputs:
       command: 'build'
-
+  
   - script: echo "Hello, World from Azure DevOps!"
     displayName: 'Print Hello World'
