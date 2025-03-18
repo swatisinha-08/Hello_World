@@ -5,5 +5,9 @@ pool:
   vmImage: 'ubuntu-latest'  # Uses an Ubuntu machine to run the script
 
 steps:
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'build'
+
   - script: echo "Hello, World from Azure DevOps!"
     displayName: 'Print Hello World'
