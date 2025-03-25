@@ -4,11 +4,13 @@ trigger:
 pool:
   name: 'MyProject'  # Uses an Ubuntu machine to run the pipeline
 
+
 steps:
   - task: JavaToolInstaller@0
     inputs:
       versionSpec: '17'
-      jdkArchitectureOption: 'x64'  # ✅ Fix: Add this option
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'  # ✅ Fix: Add this option
 
   - checkout: self
 
