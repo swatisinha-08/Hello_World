@@ -6,15 +6,14 @@ pool:
 
 steps:
   - task: JavaToolInstaller@0
-    displayName: 'Install Java'
     inputs:
-      versionSpec: '17'  # Use Java 17 or change as needed
+      versionSpec: '17'  # Change based on the Java version needed
       jdkArchitecture: 'x64'
 
+  - checkout: self  # Clones your GitHub repo into $(Build.SourcesDirectory)
+
   - script: |
-      echo "Compiling Java Program..."
-      javac HelloWorld.java
-      echo "Running Java Program..."
-      java HelloWorld
+      javac HelloWorld.java  # Compile Java file
+      java HelloWorld        # Run Java program
+    workingDirectory: '$(https://github.com/swatisinha-08/Hello_World)'  # Your repo root directory
     displayName: 'Compile and Run Java Program'
-    workingDirectory: '$(Build.SourcesDirectory)'  # Ensure it's in the correct folder
