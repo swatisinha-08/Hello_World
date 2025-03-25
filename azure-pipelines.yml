@@ -7,13 +7,13 @@ pool:
 steps:
   - task: JavaToolInstaller@0
     inputs:
-      versionSpec: '17'  # Change based on the Java version needed
-      jdkArchitecture: 'x64'
+      versionSpec: '17'
+      jdkArchitectureOption: 'x64'  # ✅ Fix: Add this option
 
-  - checkout: self  # Clones your GitHub repo into $(Build.SourcesDirectory)
+  - checkout: self
 
   - script: |
-      javac HelloWorld.java  # Compile Java file
-      java HelloWorld        # Run Java program
-    workingDirectory: '$(https://github.com/swatisinha-08/Hello_World)'  # Your repo root directory
+      javac HelloWorld.java
+      java HelloWorld
+    workingDirectory: '$(https://github.com/swatisinha-08/Hello_World)'
     displayName: 'Compile and Run Java Program'
