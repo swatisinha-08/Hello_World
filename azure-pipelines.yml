@@ -5,9 +5,16 @@ pool:
   name: 'MyProject'  # Uses an Ubuntu machine to run the pipeline
 
 steps:
+  - task: JavaToolInstaller@0
+    displayName: 'Install Java'
+    inputs:
+      versionSpec: '17'  # Use Java 17 or change as needed
+      jdkArchitecture: 'x64'
+
   - script: |
       echo "Compiling Java Program..."
       javac HelloWorld.java
       echo "Running Java Program..."
       java HelloWorld
     displayName: 'Compile and Run Java Program'
+    workingDirectory: '$(Build.SourcesDirectory)'  # Ensure it's in the correct folder
